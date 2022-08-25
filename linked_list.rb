@@ -15,6 +15,18 @@ class LinkedList
       @tail = node
     end
   end
+
+  def preprend(value)
+    node = Node.new
+    node.value = value
+    if @head.nil?
+      @head = node
+      @tail = node
+    else
+      node.next = @head
+      @head = node
+    end
+  end
 end
 
 class Node
@@ -27,4 +39,5 @@ class Node
 end
 
 list = LinkedList.new
-p list.append(4)
+list.append(4)
+p list
