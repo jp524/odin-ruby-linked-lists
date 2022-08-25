@@ -29,6 +29,18 @@ class LinkedList
       @head = node
     end
   end
+
+  def size
+    ObjectSpace.each_object(Node).count
+  end
+
+  def head
+    @head.value
+  end
+
+  def tail
+    @tail.value
+  end
 end
 
 # Defines each node of the linked list
@@ -44,4 +56,8 @@ end
 list = LinkedList.new
 list.append(4)
 list.preprend(3)
-p list
+list.preprend(2)
+list.append(5)
+# p list.size
+# p list.head
+p list.tail
