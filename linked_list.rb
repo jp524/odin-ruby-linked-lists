@@ -41,6 +41,20 @@ class LinkedList
   def tail
     @tail.value
   end
+
+  def at(index)
+    current_index = 0
+    node = @head
+    if index >= size
+      'Invalid index. Must be smaller than the size of the list.'
+    else
+      until current_index == index
+        current_index += 1
+        node = node.next_node
+      end
+      node.value
+    end
+  end
 end
 
 # Defines each node of the linked list
@@ -57,7 +71,9 @@ list = LinkedList.new
 list.append(4)
 list.preprend(3)
 list.preprend(2)
-list.append(5)
+list.preprend(1)
+list.preprend(0)
 # p list.size
 # p list.head
-p list.tail
+# p list.tail
+p list.at(1)
