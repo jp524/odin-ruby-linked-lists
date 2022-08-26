@@ -44,15 +44,14 @@ class LinkedList
 
   def at(index)
     current_index = 0
-    node = @head
     if index >= size || index.negative?
       'Invalid index. Must be smaller than the size of the list but greater than zero.'
     else
-      until current_index == index
+      each do |node|
+        return node if current_index == index
+
         current_index += 1
-        node = node.next_node
       end
-      node
     end
   end
 
@@ -68,24 +67,29 @@ class LinkedList
     end
   end
 
-  def contains?(value)
+  def each
+    return nil if @head.nil?
+
     node = @head
     until node.nil?
-      return true if node.value == value
-
+      yield node
       node = node.next_node
+    end
+  end
+
+  def contains?(value)
+    each do |node|
+      return true if node.value == value
     end
     false
   end
 
   def find(value)
     current_index = 0
-    node = @head
-    until node.nil?
+    each do |node|
       return current_index if node.value == value
 
       current_index += 1
-      node = node.next_node
     end
     nil
   end
@@ -107,5 +111,3 @@ list.preprend(3)
 list.preprend(2)
 list.preprend(1)
 list.preprend(0)
-# p list.contains?(4)
-p list.find(22)
