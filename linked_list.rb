@@ -67,6 +67,28 @@ class LinkedList
       @tail.next_node = nil
     end
   end
+
+  def contains?(value)
+    node = @head
+    until node.nil?
+      return true if node.value == value
+
+      node = node.next_node
+    end
+    false
+  end
+
+  def find(value)
+    current_index = 0
+    node = @head
+    until node.nil?
+      return current_index if node.value == value
+
+      current_index += 1
+      node = node.next_node
+    end
+    nil
+  end
 end
 
 # Defines each node of the linked list
@@ -80,14 +102,10 @@ class Node
 end
 
 list = LinkedList.new
-# list.append(4)
-# list.preprend(3)
-# list.preprend(2)
-# list.preprend(1)
+list.append(4)
+list.preprend(3)
+list.preprend(2)
+list.preprend(1)
 list.preprend(0)
-# p list.size
-# p list.head
-# p list.tail
-# p list.at(1)
-list.pop
-p list
+# p list.contains?(4)
+p list.find(22)
