@@ -93,6 +93,15 @@ class LinkedList
     end
     nil
   end
+
+  def to_s
+    node_values = []
+    each do |node|
+      node_values << node.value
+    end
+    string = node_values.join(' -> ')
+    "#{string} -> nil"
+  end
 end
 
 # Defines each node of the linked list
@@ -111,3 +120,4 @@ list.preprend(3)
 list.preprend(2)
 list.preprend(1)
 list.preprend(0)
+puts list
